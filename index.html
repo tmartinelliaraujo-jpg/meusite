@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Taoã Martinelli — Desenvolvedor web. Sites modernos, rápidos e com impacto visual."
+    />
+    <title>Taoã Martinelli | Desenvolvedor web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-loader" id="pageLoader" aria-hidden="true">
+      <div class="page-loader__inner">
+        <span class="page-loader__line"></span>
+      </div>
+    </div>
+
+    <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+    <header class="site-header">
+      <div class="container site-header__bar">
+        <a href="#" class="logo" aria-label="Início">TM</a>
+        <nav class="nav" aria-label="Principal">
+          <button
+            type="button"
+            class="nav__toggle"
+            id="navToggle"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            aria-label="Abrir menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+          <ul class="nav__list" id="navMenu">
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#skills">Habilidades</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Alternar tema claro ou escuro"
+          title="Tema"
+        >
+          <svg
+            class="theme-toggle__svg theme-toggle__svg--moon"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <svg
+            class="theme-toggle__svg theme-toggle__svg--sun"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="container hero__content">
+          <p class="hero__eyebrow">Portfólio</p>
+          <h1 id="hero-title" class="hero__title">Taoã Martinelli</h1>
+          <p class="hero__role">Desenvolvedor web</p>
+          <p class="hero__tagline">
+            Crio sites modernos, rápidos e com apelo visual.
+          </p>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">Ver projetos</a>
+            <a href="#contact" class="btn btn--ghost">Fale comigo</a>
+          </div>
+        </div>
+        <a href="#about" class="hero__scroll" aria-label="Rolar para sobre">
+          <span class="hero__scroll-line"></span>
+        </a>
+      </section>
+
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="container section__inner">
+          <header class="section__header">
+            <h2 id="about-title" class="section__title">Sobre mim</h2>
+            <p class="section__subtitle">Quem sou</p>
+          </header>
+          <div class="about__grid">
+            <p class="about__text lead">
+              Gosto de transformar ideias em interfaces que funcionam bem e
+              agradam de verdade — código limpo, performance que importa no
+              dia a dia e aquele detalhe visual que faz a diferença.
+            </p>
+            <p class="about__text">
+              Trabalho focado em desenvolvimento web: do layout à integração
+              com APIs, sempre buscando soluções simples para problemas que
+              parecem complicados. Para mim, um bom projeto é aquele que a
+              equipe e as pessoas que usam entendem sem esforço.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section projects"
+        id="projects"
+        aria-labelledby="projects-title"
+      >
+        <div class="container section__inner">
+          <header class="section__header">
+            <h2 id="projects-title" class="section__title">Projetos</h2>
+            <p class="section__subtitle">Seleção recente</p>
+          </header>
+          <div class="projects__grid">
+            <article class="project-card">
+              <div class="project-card__media">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                  alt=""
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Painel de analytics</h3>
+                <p class="project-card__desc">
+                  Painel com métricas em tempo real, gráficos leves e foco em
+                  legibilidade.
+                </p>
+                <a
+                  href="https://example.com"
+                  class="btn btn--small btn--primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Ver projeto</a
+                >
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-card__media">
+                <img
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
+                  alt=""
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Landing page SaaS</h3>
+                <p class="project-card__desc">
+                  Página de produto minimalista, animações discretas e chamada
+                  para ação clara.
+                </p>
+                <a
+                  href="https://example.com"
+                  class="btn btn--small btn--primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Ver projeto</a
+                >
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-card__media">
+                <img
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
+                  alt=""
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Interface de e-commerce</h3>
+                <p class="project-card__desc">
+                  Fluxo de compra simplificado, cards de produto e checkout
+                  responsivo.
+                </p>
+                <a
+                  href="https://example.com"
+                  class="btn btn--small btn--primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Ver projeto</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section skills" id="skills" aria-labelledby="skills-title">
+        <div class="container section__inner">
+          <header class="section__header">
+            <h2 id="skills-title" class="section__title">Habilidades</h2>
+            <p class="section__subtitle">Stack e ferramentas</p>
+          </header>
+          <ul class="skills__list">
+            <li class="skill-pill">HTML, CSS, JavaScript</li>
+            <li class="skill-pill">FlutterFlow</li>
+            <li class="skill-pill">APIs / integração com backend</li>
+            <li class="skill-pill">Performance e acessibilidade</li>
+            <li class="skill-pill">Design responsivo</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="section contact"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="container section__inner contact__inner">
+          <header class="section__header section__header--center">
+            <h2 id="contact-title" class="section__title">Contato</h2>
+            <p class="section__subtitle">Vamos conversar</p>
+          </header>
+          <p class="contact__cta">Vamos trabalhar juntos</p>
+          <ul class="contact__links">
+            <li>
+              <a href="mailto:contato@exemplo.com" class="contact__link"
+                >contato@exemplo.com</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://wa.me/5500000000000"
+                class="contact__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                >WhatsApp</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/in/seu-perfil"
+                class="contact__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p class="site-footer__copy">
+          © <span id="year"></span> Taoã Martinelli. Feito com HTML, CSS e JavaScript.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
