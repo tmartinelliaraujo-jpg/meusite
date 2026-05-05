@@ -1,31 +1,11 @@
 (function () {
   "use strict";
 
-  var THEME_KEY = "tm-portfolio-theme";
   var html = document.documentElement;
   var loader = document.getElementById("pageLoader");
-  var themeToggle = document.getElementById("themeToggle");
   var navToggle = document.getElementById("navToggle");
   var navMenu = document.getElementById("navMenu");
-  var yearEl = document.getElementById("year");
-
-  function applyTheme(theme) {
-    if (theme !== "light" && theme !== "dark") return;
-    html.setAttribute("data-theme", theme);
-    try {
-      localStorage.setItem(THEME_KEY, theme);
-    } catch (e) {}
-  }
-
-  function initTheme() {
-    var stored = null;
-    try {
-      stored = localStorage.getItem(THEME_KEY);
-    } catch (e) {}
-    if (stored === "light" || stored === "dark") {
-      applyTheme(stored);
-    }
-  }
+  var hero = document.querySelector(".hero");
 
   function hideLoader() {
     if (!loader) return;
@@ -37,8 +17,6 @@
     setTimeout(removeNode, 600);
   }
 
-  initTheme();
-
   if (document.readyState === "complete") {
     requestAnimationFrame(function () {
       setTimeout(hideLoader, 320);
@@ -48,14 +26,6 @@
       requestAnimationFrame(function () {
         setTimeout(hideLoader, 320);
       });
-    });
-  }
-
-  if (themeToggle) {
-    themeToggle.addEventListener("click", function () {
-      var next =
-        html.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      applyTheme(next);
     });
   }
 
@@ -87,12 +57,81 @@
     });
   }
 
-  if (yearEl) {
-    yearEl.textContent = String(new Date().getFullYear());
-  }
-
   var header = document.querySelector(".site-header");
   var headerHeight = header ? header.offsetHeight : 72;
+
+  function updateHeroParallax() {
+    if (!hero) return;
+    var heroHeight = hero.offsetHeight;
+    if (heroHeight <= 0) return;
+    var scrollTop = window.scrollY || window.pageYOffset || 0;
+    var progress = Math.max(0, Math.min(scrollTop / heroHeight, 1));
+    var shift = Math.round(progress * 40);
+    document.documentElement.style.setProperty("--hero-shift", shift + "px");
+  }
+
+  updateHeroParallax();
+  window.addEventListener("scroll", updateHeroParallax, { passive: true });
+  window.addEventListener("resize", updateHeroParallax);
+
+  // Multi-carousel logic
+  const carouselRegistry = {};
+
+  function setupCarousel(carouselId, prevId, nextId) {
+    const carousel = document.getElementById(carouselId);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+
+    if (carousel && prevBtn && nextBtn) {
+      // Only add listeners once per button pair
+      if (!prevBtn.dataset.hasListener) {
+        prevBtn.addEventListener("click", function () {
+          const activeCarousel = carouselRegistry[prevId]?.find(c => c.style.display !== 'none');
+          if (activeCarousel) {
+            activeCarousel.scrollBy({ left: -activeCarousel.offsetWidth, behavior: 'smooth' });
+          }
+        });
+        prevBtn.dataset.hasListener = "true";
+      }
+
+      if (!nextBtn.dataset.hasListener) {
+        nextBtn.addEventListener("click", function () {
+          const activeCarousel = carouselRegistry[nextId]?.find(c => c.style.display !== 'none');
+          if (activeCarousel) {
+            activeCarousel.scrollBy({ left: activeCarousel.offsetWidth, behavior: 'smooth' });
+          }
+        });
+        nextBtn.dataset.hasListener = "true";
+      }
+
+      function toggleArrows() {
+        const isVisible = carousel.style.display !== 'none';
+        if (!isVisible) return;
+        
+        prevBtn.style.display = "flex";
+        nextBtn.style.display = "flex";
+      }
+
+      window.addEventListener("resize", toggleArrows);
+      
+      // Register
+      if (!carouselRegistry[prevId]) carouselRegistry[prevId] = [];
+      if (!carouselRegistry[nextId]) carouselRegistry[nextId] = [];
+      carouselRegistry[prevId].push(carousel);
+      carouselRegistry[nextId].push(carousel);
+      
+      return toggleArrows;
+    }
+  }
+
+  const projectArrows = setupCarousel("projectCarousel", "prevProject", "nextProject");
+  const mediaProjectArrows = setupCarousel("mediaProjectCarousel", "prevProject", "nextProject");
+  const devsArrows = setupCarousel("resumeCarousel", "prevResume", "nextResume");
+  const mediaArrows = setupCarousel("mediaCarousel", "prevResume", "nextResume");
+
+  // Initialize arrow visibility
+  if (projectArrows) projectArrows();
+  if (devsArrows) devsArrows();
 
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener("click", function (e) {
@@ -109,4 +148,73 @@
       window.scrollTo({ top: top, behavior: "smooth" });
     });
   });
+
+  // Team Switcher Logic
+  var teamSwitcher = document.getElementById('teamSwitcher');
+  var tab1 = document.getElementById('tab1');
+  var tab2 = document.getElementById('tab2');
+  var indicator = document.getElementById('teamIndicator');
+
+  function updateIndicator(activeTab) {
+    if (!indicator || !activeTab) return;
+    const rect = activeTab.getBoundingClientRect();
+    const switcherRect = teamSwitcher.getBoundingClientRect();
+    
+    indicator.style.width = rect.width + 'px';
+    indicator.style.left = (rect.left - switcherRect.left) + 'px';
+  }
+
+  window.switchTeam = function(team) {
+    if (!teamSwitcher || !tab1 || !tab2) return;
+
+    const devsGroup = document.getElementById('resumeCarousel');
+    const mediaGroup = document.getElementById('mediaCarousel');
+    const devProjects = document.getElementById('projectCarousel');
+    const mediaProjects = document.getElementById('mediaProjectCarousel');
+    const teamCountSpan = document.getElementById('teamCount');
+
+    if (team === 'media') {
+      tab1.classList.remove('active');
+      tab2.classList.add('active');
+      updateIndicator(tab2);
+      
+      if (devsGroup) devsGroup.style.display = 'none';
+      if (mediaGroup) mediaGroup.style.display = 'flex';
+      if (devProjects) devProjects.style.display = 'none';
+      if (mediaProjects) mediaProjects.style.display = 'flex';
+      
+      if (teamCountSpan && mediaGroup) {
+        teamCountSpan.textContent = mediaGroup.querySelectorAll('.project-card').length;
+      }
+    } else {
+      tab2.classList.remove('active');
+      tab1.classList.add('active');
+      updateIndicator(tab1);
+      
+      if (devsGroup) devsGroup.style.display = 'flex';
+      if (mediaGroup) mediaGroup.style.display = 'none';
+      if (devProjects) devProjects.style.display = 'flex';
+      if (mediaProjects) mediaProjects.style.display = 'none';
+
+      if (teamCountSpan && devsGroup) {
+        teamCountSpan.textContent = devsGroup.querySelectorAll('.project-card').length;
+      }
+
+      // Update arrows visibility
+      if (projectArrows) projectArrows();
+      if (mediaProjectArrows) mediaProjectArrows();
+      if (devsArrows) devsArrows();
+      if (mediaArrows) mediaArrows();
+    }
+  };
+
+  if (teamSwitcher) {
+    window.addEventListener('load', () => {
+      setTimeout(() => updateIndicator(tab1), 100);
+    });
+    window.addEventListener('resize', () => {
+      const active = teamSwitcher.querySelector('.team-tab.active');
+      updateIndicator(active);
+    });
+  }
 })();
