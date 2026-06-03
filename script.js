@@ -217,4 +217,139 @@
       updateIndicator(active);
     });
   }
+
+  var mediaGalleries = {
+    "carros-rua": {
+      title: "Carros de Rua",
+      photos: [
+        "images/galeria/carros-de-rua/20260602_170711(1).jpg.jpeg",
+        "images/galeria/carros-de-rua/20260602_170739(2).jpg.jpeg",
+        "images/galeria/carros-de-rua/20260602_171542(2).jpg.jpeg",
+        "images/galeria/carros-de-rua/20260602_171720(0).jpg.jpeg",
+        "images/galeria/carros-de-rua/IMG-20260603-WA0012.jpg.jpeg",
+        "images/galeria/carros-de-rua/IMG-20260603-WA0013(1).jpg.jpeg",
+        "images/galeria/carros-de-rua/IMG-20260603-WA0014.jpg.jpeg",
+        "images/galeria/carros-de-rua/IMG-20260603-WA0015.jpg.jpeg"
+      ]
+    },
+    "cobertura-eventos": {
+      title: "Cobertura em Eventos",
+      photos: []
+    }
+  };
+
+  var photoGalleryEl = document.getElementById("photoGallery");
+  var photoGalleryTitle = document.getElementById("photoGalleryTitle");
+  var photoGalleryBody = document.getElementById("photoGalleryBody");
+  var photoLightboxEl = document.getElementById("photoLightbox");
+  var photoLightboxImg = document.getElementById("photoLightboxImg");
+  var galleryCloseTrigger = null;
+  var lightboxReturnFocus = null;
+
+  function closePhotoLightbox() {
+    if (!photoLightboxEl || !photoLightboxImg) return;
+    photoLightboxEl.hidden = true;
+    photoLightboxEl.setAttribute("aria-hidden", "true");
+    photoLightboxImg.removeAttribute("src");
+    if (lightboxReturnFocus && typeof lightboxReturnFocus.focus === "function") {
+      lightboxReturnFocus.focus();
+    }
+    lightboxReturnFocus = null;
+  }
+
+  function openPhotoLightbox(src, alt, triggerEl) {
+    if (!photoLightboxEl || !photoLightboxImg) return;
+    lightboxReturnFocus = triggerEl || null;
+    photoLightboxImg.src = src;
+    photoLightboxImg.alt = alt || "";
+    photoLightboxEl.hidden = false;
+    photoLightboxEl.setAttribute("aria-hidden", "false");
+    photoLightboxEl.querySelector(".photo-lightbox__close").focus();
+  }
+
+  function closePhotoGallery() {
+    if (!photoGalleryEl) return;
+    photoGalleryEl.hidden = true;
+    photoGalleryEl.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-gallery-open");
+    if (galleryCloseTrigger && typeof galleryCloseTrigger.focus === "function") {
+      galleryCloseTrigger.focus();
+    }
+    galleryCloseTrigger = null;
+  }
+
+  function openPhotoGallery(galleryId, triggerEl) {
+    if (!photoGalleryEl || !photoGalleryBody || !photoGalleryTitle) return;
+
+    var gallery = mediaGalleries[galleryId];
+    if (!gallery) return;
+
+    galleryCloseTrigger = triggerEl || null;
+    photoGalleryTitle.textContent = gallery.title;
+    photoGalleryBody.innerHTML = "";
+
+    if (!gallery.photos.length) {
+      var empty = document.createElement("p");
+      empty.className = "photo-gallery__empty";
+      empty.textContent = "sem fotos";
+      photoGalleryBody.appendChild(empty);
+    } else {
+      var grid = document.createElement("div");
+      grid.className = "photo-gallery__grid";
+
+      gallery.photos.forEach(function (src, index) {
+        var item = document.createElement("button");
+        item.type = "button";
+        item.className = "photo-gallery__item";
+        item.setAttribute("aria-label", gallery.title + " — foto " + (index + 1));
+
+        var img = document.createElement("img");
+        img.src = encodeURI(src);
+        img.alt = gallery.title + " " + (index + 1);
+        img.loading = "lazy";
+
+        item.appendChild(img);
+        item.addEventListener("click", function () {
+          openPhotoLightbox(encodeURI(src), img.alt, item);
+        });
+        grid.appendChild(item);
+      });
+
+      photoGalleryBody.appendChild(grid);
+    }
+
+    photoGalleryEl.hidden = false;
+    photoGalleryEl.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-gallery-open");
+    photoGalleryEl.querySelector(".photo-gallery__close").focus();
+  }
+
+  document.querySelectorAll("[data-gallery]").forEach(function (card) {
+    card.addEventListener("click", function () {
+      openPhotoGallery(card.getAttribute("data-gallery"), card);
+    });
+  });
+
+  if (photoGalleryEl) {
+    photoGalleryEl.querySelectorAll("[data-gallery-close]").forEach(function (el) {
+      el.addEventListener("click", closePhotoGallery);
+    });
+  }
+
+  if (photoLightboxEl) {
+    photoLightboxEl.querySelectorAll("[data-lightbox-close]").forEach(function (el) {
+      el.addEventListener("click", closePhotoLightbox);
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (photoLightboxEl && !photoLightboxEl.hidden) {
+      closePhotoLightbox();
+      return;
+    }
+    if (photoGalleryEl && !photoGalleryEl.hidden) {
+      closePhotoGallery();
+    }
+  });
 })();

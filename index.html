@@ -35,7 +35,7 @@
         <ul class="nav__list" id="navMenu">
           <li><a href="#about">Sobre</a></li>
           <li><a href="#skills">Equipe</a></li>
-          <li><a href="#projects">Projetos</a></li>
+          <li><a href="#projects">Portifolio</a></li>
           <li><a href="#contact">Contato</a></li>
         </ul>
       </nav>
@@ -130,16 +130,6 @@
                 <p class="project-card__desc">Fotógrafo, Filmaker, Social Midia, Estrategia de Conteudo</p>
               </div>
             </article>
-            <article class="project-card">
-              <div class="project-card__media">
-                <img src="images/elizabeth.jpeg"
-                  alt="Elizabeth Silva" width="800" height="500" loading="lazy" />
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Elizabeth Silva</h3>
-                <p class="project-card__desc">Fotógrafa, Filmaker, Social Midia</p>
-              </div>
-            </article>
             </div>
 
           <button class="carousel-btn carousel-btn--next" id="nextResume" aria-label="Próximo">
@@ -155,8 +145,8 @@
     <section class="section projects" id="projects" aria-labelledby="projects-title">
       <div class="container section__inner">
         <header class="section__header section__header--center">
-          <h2 id="projects-title" class="section__title">Projetos</h2>
-          <p class="section__subtitle">projetos executados</p>
+          <h2 id="projects-title" class="section__title">Portifolio</h2>
+          <p class="section__subtitle">portifolio executados</p>
         </header>
         <div class="projects__wrapper">
           <button class="carousel-btn carousel-btn--prev" id="prevProject" aria-label="Anterior">
@@ -178,8 +168,8 @@
                 <p class="project-card__desc">
                   Desenvolvimento web moderno com foco em design limpo e alta performance.
                 </p>
-                <a href="https://bymartinelli.netlify.app" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer">Ver projeto</a>
+                <a href="https://tmartinelliaraujo-jpg.github.io/meusite/" class="btn btn--small btn--primary" target="_blank"
+                  rel="noopener noreferrer">Abrir site</a>
               </div>
             </article>
             <article class="project-card">
@@ -192,22 +182,22 @@
                 <p class="project-card__desc">
                   Comunidade automotiva focada no conceito "Feito, não comprado" e estilo de vida.
                 </p>
-                <a href="https://overdrivecrew.netlify.app" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer">Ver projeto</a>
+                <a href="https://tmartinelliaraujo-jpg.github.io/overdrive/" class="btn btn--small btn--primary" target="_blank"
+                  rel="noopener noreferrer">Abrir site</a>
               </div>
             </article>
             <article class="project-card">
               <div class="project-card__media">
-                <img src="images/lobby.jpeg" alt="LOBBY RPG"
+                <img src="images/lobby.jpeg" alt="Cúrriculo"
                   width="800" height="500" loading="lazy" />
               </div>
               <div class="project-card__body">
-                <h3 class="project-card__title">LOBBY</h3>
+                <h3 class="project-card__title">Cúrriculo</h3>
                 <p class="project-card__desc">
                   Interface gamificada para seleção de perfil e experiência imersiva de usuário.
                 </p>
-                <a href="https://taoamartinelli.netlify.app" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer">Ver projeto</a>
+                <a href="https://tmartinelliaraujo-jpg.github.io/curriculo/" class="btn btn--small btn--primary" target="_blank"
+                  rel="noopener noreferrer">Abrir site</a>
               </div>
             </article>
             <article class="project-card">
@@ -220,17 +210,28 @@
                 <p class="project-card__desc">
                   Portfólio especializado em fotografia automotiva estilizada e artística.
                 </p>
-                <a href="https://portifoliolizzie.netlify.app" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer">Ver projeto</a>
+                <a href="https://tmartinelliaraujo-jpg.github.io/portifolio/" class="btn btn--small btn--primary" target="_blank"
+                  rel="noopener noreferrer">Abrir site</a>
               </div>
             </article>
           </div>
 
           <!-- Media Projects Group -->
           <div class="projects__carousel team-group" id="mediaProjectCarousel" data-team-group="media" style="display: none;">
-            <div class="empty-projects">
-              <p>Novos projetos de mídia em breve...</p>
-            </div>
+            <button type="button" class="project-card project-card--gallery" data-gallery="carros-rua"
+              aria-label="Abrir galeria Carros de Rua">
+              <div class="project-card__media project-card__media--placeholder" aria-hidden="true"></div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Carros de Rua</h3>
+              </div>
+            </button>
+            <button type="button" class="project-card project-card--gallery" data-gallery="cobertura-eventos"
+              aria-label="Abrir galeria Cobertura em Eventos">
+              <div class="project-card__media project-card__media--placeholder" aria-hidden="true"></div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Cobertura em Eventos</h3>
+              </div>
+            </button>
           </div>
 
           <button class="carousel-btn carousel-btn--next" id="nextProject" aria-label="Próximo">
@@ -269,7 +270,36 @@
     </section>
   </main>
 
+  <div class="photo-lightbox" id="photoLightbox" hidden aria-hidden="true">
+    <button type="button" class="photo-lightbox__backdrop" data-lightbox-close aria-label="Fechar foto ampliada"></button>
+    <figure class="photo-lightbox__stage">
+      <button type="button" class="photo-lightbox__close" data-lightbox-close aria-label="Fechar foto ampliada">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img class="photo-lightbox__img" id="photoLightboxImg" alt="" />
+    </figure>
+  </div>
 
+  <div class="photo-gallery" id="photoGallery" hidden aria-hidden="true">
+    <div class="photo-gallery__backdrop" data-gallery-close></div>
+    <div class="photo-gallery__panel" role="dialog" aria-modal="true" aria-labelledby="photoGalleryTitle">
+      <header class="photo-gallery__header">
+        <h2 class="photo-gallery__title" id="photoGalleryTitle"></h2>
+        <button type="button" class="photo-gallery__close" data-gallery-close aria-label="Fechar galeria">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+      <div class="photo-gallery__body" id="photoGalleryBody"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
