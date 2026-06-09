@@ -229,7 +229,11 @@
         "images/galeria/carros-de-rua/IMG-20260603-WA0012.jpg.jpeg",
         "images/galeria/carros-de-rua/IMG-20260603-WA0013(1).jpg.jpeg",
         "images/galeria/carros-de-rua/IMG-20260603-WA0014.jpg.jpeg",
-        "images/galeria/carros-de-rua/IMG-20260603-WA0015.jpg.jpeg"
+        "images/galeria/carros-de-rua/IMG-20260603-WA0015.jpg.jpeg",
+        "images/galeria/carros-de-rua/WhatsApp Image 2026-06-05 at 13.11.47.jpeg",
+        "images/galeria/carros-de-rua/WhatsApp Image 2026-06-05 at 13.11.48.jpeg",
+        "images/galeria/carros-de-rua/WhatsApp Imjage 2026-06-05 at 13.11.48.jpeg",
+        "images/galeria/carros-de-rua/20260609_135757.jpg.jpeg"
       ]
     },
     "cobertura-eventos": {
@@ -350,6 +354,249 @@
     }
     if (photoGalleryEl && !photoGalleryEl.hidden) {
       closePhotoGallery();
+      return;
+    }
+    if (resumeModalEl && !resumeModalEl.hidden) {
+      closeResumeModal();
     }
   });
+
+  var teamProfiles = {
+    taoa: {
+      id: "OP-02",
+      name: "Taoã Araújo",
+      role: "Profissional - Júnior",
+      photo: "images/taoa.jpeg",
+      dados: [
+        { label: "Nome completo", value: "Taoã Augusto Martinelli de Araújo" },
+        { label: "Data de nascimento", value: "30/03/2007" },
+        { label: "Telefone", value: "(61) 9.9663-3075" },
+        { label: "E-mail", value: "tmartinelliaraujo@gmail.com" },
+        { label: "Cidade", value: "Cidade Ocidental" },
+        { label: "Estado", value: "Goiás" },
+        { label: "Estado civil", value: "Solteiro" }
+      ],
+      details: [
+        "A atuação em programação começou de forma recreativa no ensino médio, onde era feito automações, sistemas e até mini games.",
+        "Trabalhar na área de programação é uma escolha de todo dia evoluir profissional e pessoal.",
+        "Capacidade em liderar de forma prática e empática.",
+        "Aprendizado com curva média.",
+        "Aprendizado maior em prática."
+      ],
+      experiences: [
+        {
+          org: "Automações",
+          period: "Atuação recorrente",
+          desc: "Criação de fluxos para reduzir tarefas manuais, padronizar processos e aumentar produtividade em rotinas operacionais."
+        },
+        {
+          org: "Engenharia de prompt",
+          period: "Aplicação prática",
+          desc: "Construção e refinamento de prompts para melhorar qualidade de respostas, consistência e eficiência em soluções com IA."
+        },
+        {
+          org: "Projetos e colaboração",
+          period: "Execução em equipe",
+          desc: "Condução de entregas com times multidisciplinares, alinhando objetivos, escopo e qualidade técnica."
+        },
+        {
+          org: "Ensinar",
+          period: "Compartilhamento contínuo",
+          desc: "Mentoria e repasse de conhecimento técnico para acelerar aprendizado de pessoas e fortalecer o time."
+        },
+        {
+          org: "Liderar",
+          period: "Atuação em times",
+          desc: "Coordenação de pessoas e prioridades para manter foco, ritmo de entrega e qualidade nas execuções."
+        },
+        {
+          org: "Designers",
+          period: "Colaboração constante",
+          desc: "Trabalho próximo com designers para transformar requisitos em interfaces funcionais, coerentes e com boa experiência."
+        },
+        {
+          org: "Inglês de nível médio",
+          period: "Vivência internacional",
+          desc: "Desenvolvimento do idioma com experiência prática após morar no exterior por um ano."
+        },
+        {
+          org: "Vibe code",
+          period: "Prática contínua",
+          desc: "Desenvolvimento acelerado com apoio de IA, iterando rápido de ideia a protótipo funcional."
+        }
+      ],
+      certificates: [
+        "Python I 40Hrs - Curso em Vídeo",
+        "Python II 40Hrs - Curso em Vídeo",
+        "Python III 40Hrs - Curso em Vídeo",
+        "Inteligência Artificial I 40Hrs - Curso em Vídeo",
+        "HTML I 40Hrs - Curso em Vídeo",
+        "CSS I 40Hrs - Curso em Vídeo",
+        "Kubernetes 17Hrs - Udemy"
+      ],
+      skills: [
+        "Python III",
+        "JavaScript II",
+        "TypeScript I",
+        "HTML II",
+        "CSS II",
+        "React II",
+        "Node I",
+        "Rest II",
+        "Testes II",
+        "Inglês II"
+      ],
+      idiomas: ["Português", "Inglês", "Espanhol"],
+      tools: [
+        "VSCode",
+        "Cursor",
+        "Antigravity",
+        "FlutterFlow",
+        "Mulesoft",
+        "GitHub",
+        "GitLab",
+        "Docker",
+        "Postman",
+        "Figma",
+        "N8n",
+        "RPA",
+        "Kubernetes"
+      ]
+    }
+  };
+
+  var resumeModalEl = document.getElementById("resumeModal");
+  var resumeModalId = document.getElementById("resumeModalId");
+  var resumeModalTitle = document.getElementById("resumeModalTitle");
+  var resumeModalRole = document.getElementById("resumeModalRole");
+  var resumeModalPhoto = document.getElementById("resumeModalPhoto");
+  var resumeModalBody = document.getElementById("resumeModalBody");
+  var resumeCloseTrigger = null;
+
+  function renderResumeSection(title, contentHtml) {
+    return (
+      '<section class="resume-section">' +
+      '<h3 class="resume-section__title">' + title + "</h3>" +
+      contentHtml +
+      "</section>"
+    );
+  }
+
+  function renderResumeTags(items) {
+    return (
+      '<ul class="resume-tags">' +
+      items.map(function (item) {
+        return '<li class="resume-tags__item">' + item + "</li>";
+      }).join("") +
+      "</ul>"
+    );
+  }
+
+  function openResumeModal(profileId, triggerEl) {
+    if (!resumeModalEl || !resumeModalBody) return;
+
+    var profile = teamProfiles[profileId];
+    if (!profile) return;
+
+    resumeCloseTrigger = triggerEl || null;
+
+    if (resumeModalId) resumeModalId.textContent = profile.id;
+    if (resumeModalTitle) resumeModalTitle.textContent = profile.name;
+    if (resumeModalRole) resumeModalRole.textContent = profile.role;
+    if (resumeModalPhoto) {
+      resumeModalPhoto.src = profile.photo;
+      resumeModalPhoto.alt = profile.name;
+    }
+
+    var dadosHtml =
+      '<dl class="resume-dados">' +
+      profile.dados.map(function (item) {
+        return (
+          '<div class="resume-dados__row">' +
+          '<dt>' + item.label + "</dt>" +
+          '<dd>' + item.value + "</dd>" +
+          "</div>"
+        );
+      }).join("") +
+      "</dl>";
+
+    var detailsHtml =
+      '<ul class="resume-list">' +
+      profile.details.map(function (detail) {
+        return '<li class="resume-list__item">' + detail + "</li>";
+      }).join("") +
+      "</ul>";
+
+    var experiencesHtml =
+      '<div class="resume-experiences">' +
+      profile.experiences.map(function (exp) {
+        return (
+          '<article class="resume-experience">' +
+          '<h4 class="resume-experience__org">' + exp.org + "</h4>" +
+          '<p class="resume-experience__period">' + exp.period + "</p>" +
+          '<p class="resume-experience__desc">' + exp.desc + "</p>" +
+          "</article>"
+        );
+      }).join("") +
+      "</div>";
+
+    var certificatesHtml =
+      '<ul class="resume-list resume-list--certs">' +
+      profile.certificates.map(function (cert) {
+        return '<li class="resume-list__item">' + cert + "</li>";
+      }).join("") +
+      "</ul>";
+
+    resumeModalBody.innerHTML =
+      renderResumeSection("Dados", dadosHtml) +
+      renderResumeSection("Detalhes", detailsHtml) +
+      renderResumeSection("Experiências", experiencesHtml) +
+      renderResumeSection("Certificados", certificatesHtml) +
+      renderResumeSection("Habilidades", renderResumeTags(profile.skills)) +
+      renderResumeSection("Idiomas", renderResumeTags(profile.idiomas)) +
+      renderResumeSection("Ferramentas", renderResumeTags(profile.tools));
+
+    resumeModalEl.hidden = false;
+    resumeModalEl.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-resume-open");
+    resumeModalEl.querySelector(".resume-modal__close").focus();
+  }
+
+  function closeResumeModal() {
+    if (!resumeModalEl) return;
+    resumeModalEl.hidden = true;
+    resumeModalEl.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-resume-open");
+    if (resumeCloseTrigger && typeof resumeCloseTrigger.focus === "function") {
+      resumeCloseTrigger.focus();
+    }
+    resumeCloseTrigger = null;
+  }
+
+  document.querySelectorAll("[data-profile]").forEach(function (card) {
+    card.addEventListener("click", function () {
+      openResumeModal(card.getAttribute("data-profile"), card);
+    });
+
+    card.querySelectorAll("[data-profile-link]").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    });
+
+    if (card.getAttribute("role") === "button") {
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openResumeModal(card.getAttribute("data-profile"), card);
+        }
+      });
+    }
+  });
+
+  if (resumeModalEl) {
+    resumeModalEl.querySelectorAll("[data-resume-close]").forEach(function (el) {
+      el.addEventListener("click", closeResumeModal);
+    });
+  }
 })();

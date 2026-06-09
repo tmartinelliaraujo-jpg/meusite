@@ -106,7 +106,8 @@
           
             <!-- Desenvolvedores Group -->
             <div class="projects__carousel team-group active" id="resumeCarousel" data-team-group="devs">
-              <article class="project-card">
+              <button type="button" class="project-card project-card--profile" data-profile="taoa"
+                aria-label="Ver currículo de Taoã Araújo">
                 <div class="project-card__media">
                   <img src="images/taoa.jpeg"
                     alt="Taoã Martinelli" width="800" height="500" loading="lazy" />
@@ -115,7 +116,7 @@
                   <h3 class="project-card__title">Taoã Martinelli</h3>
                   <p class="project-card__desc">Júnior • 1 ano e 9 meses • Full Stack, Designer, Data Base, Kubernets, Web Programador</p>
                 </div>
-              </article>
+              </button>
             </div>
 
             <!-- Midia Group -->
@@ -186,7 +187,8 @@
                   rel="noopener noreferrer">Abrir site</a>
               </div>
             </article>
-            <article class="project-card">
+            <article class="project-card project-card--profile" data-profile="taoa" tabindex="0"
+              role="button" aria-label="Ver currículo de Taoã Araújo">
               <div class="project-card__media">
                 <img src="images/lobby.jpeg" alt="Cúrriculo"
                   width="800" height="500" loading="lazy" />
@@ -197,7 +199,7 @@
                   Interface gamificada para seleção de perfil e experiência imersiva de usuário.
                 </p>
                 <a href="https://tmartinelliaraujo-jpg.github.io/curriculo/" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer">Abrir site</a>
+                  rel="noopener noreferrer" data-profile-link>Abrir site</a>
               </div>
             </article>
             <article class="project-card">
@@ -282,6 +284,30 @@
       </button>
       <img class="photo-lightbox__img" id="photoLightboxImg" alt="" />
     </figure>
+  </div>
+
+  <div class="resume-modal" id="resumeModal" hidden aria-hidden="true">
+    <div class="resume-modal__backdrop" data-resume-close></div>
+    <div class="resume-modal__panel" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
+      <header class="resume-modal__header">
+        <div class="resume-modal__intro">
+          <img class="resume-modal__photo" id="resumeModalPhoto" src="" alt="" width="72" height="72" />
+          <div class="resume-modal__heading">
+            <p class="resume-modal__id" id="resumeModalId"></p>
+            <h2 class="resume-modal__title" id="resumeModalTitle"></h2>
+            <p class="resume-modal__role" id="resumeModalRole"></p>
+          </div>
+        </div>
+        <button type="button" class="resume-modal__close" data-resume-close aria-label="Fechar currículo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+      <div class="resume-modal__body" id="resumeModalBody"></div>
+    </div>
   </div>
 
   <div class="photo-gallery" id="photoGallery" hidden aria-hidden="true">
