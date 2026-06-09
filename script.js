@@ -233,6 +233,9 @@
         "images/galeria/carros-de-rua/WhatsApp Image 2026-06-05 at 13.11.47.jpeg",
         "images/galeria/carros-de-rua/WhatsApp Image 2026-06-05 at 13.11.48.jpeg",
         "images/galeria/carros-de-rua/WhatsApp Imjage 2026-06-05 at 13.11.48.jpeg",
+        "images/galeria/carros-de-rua/20260607_150638.jpg.jpeg",
+        "images/galeria/carros-de-rua/20260609_134638.jpg.jpeg",
+        "images/galeria/carros-de-rua/20260609_135406.jpg.jpeg",
         "images/galeria/carros-de-rua/20260609_135757.jpg.jpeg"
       ]
     },
