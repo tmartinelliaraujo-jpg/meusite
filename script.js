@@ -234,9 +234,10 @@
         "images/galeria/carros-de-rua/WhatsApp Image 2026-06-05 at 13.11.48.jpeg",
         "images/galeria/carros-de-rua/WhatsApp Imjage 2026-06-05 at 13.11.48.jpeg",
         "images/galeria/carros-de-rua/20260607_150638.jpg.jpeg",
-        "images/galeria/carros-de-rua/20260609_134638.jpg.jpeg",
-        "images/galeria/carros-de-rua/20260609_135406.jpg.jpeg",
-        "images/galeria/carros-de-rua/20260609_135757.jpg.jpeg"
+        "images/galeria/carros-de-rua/20260610_090149.jpg.jpeg",
+        "images/galeria/carros-de-rua/ChatGPT Image 10_06_2026, 09_18_05.png",
+        "images/galeria/carros-de-rua/ChatGPT Image 10_06_2026, 09_18_17.png",
+        "images/galeria/carros-de-rua/ChatGPT Image 10_06_2026, 09_18_22.png"
       ]
     },
     "cobertura-eventos": {
@@ -252,6 +253,12 @@
   var photoLightboxImg = document.getElementById("photoLightboxImg");
   var galleryCloseTrigger = null;
   var lightboxReturnFocus = null;
+
+  function encodeImagePath(src) {
+    return src.split("/").map(function (part) {
+      return encodeURIComponent(part);
+    }).join("/");
+  }
 
   function closePhotoLightbox() {
     if (!photoLightboxEl || !photoLightboxImg) return;
@@ -310,14 +317,15 @@
         item.className = "photo-gallery__item";
         item.setAttribute("aria-label", gallery.title + " — foto " + (index + 1));
 
+        var encodedSrc = encodeImagePath(src);
         var img = document.createElement("img");
-        img.src = encodeURI(src);
+        img.src = encodedSrc;
         img.alt = gallery.title + " " + (index + 1);
         img.loading = "lazy";
 
         item.appendChild(img);
         item.addEventListener("click", function () {
-          openPhotoLightbox(encodeURI(src), img.alt, item);
+          openPhotoLightbox(encodedSrc, img.alt, item);
         });
         grid.appendChild(item);
       });
