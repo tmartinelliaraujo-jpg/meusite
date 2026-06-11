@@ -235,6 +235,7 @@
         "images/galeria/carros-de-rua/WhatsApp Imjage 2026-06-05 at 13.11.48.jpeg",
         "images/galeria/carros-de-rua/20260607_150638.jpg.jpeg",
         "images/galeria/carros-de-rua/20260610_090149.jpg.jpeg",
+        "images/galeria/carros-de-rua/20260610_171014(1).jpg.jpeg",
         "images/galeria/carros-de-rua/ChatGPT Image 10_06_2026, 09_18_05.png",
         "images/galeria/carros-de-rua/ChatGPT Image 10_06_2026, 09_18_17.png",
         "images/galeria/carros-de-rua/ChatGPT Image 10_06_2026, 09_18_22.png"
