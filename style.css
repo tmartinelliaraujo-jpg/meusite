@@ -128,6 +128,13 @@ body::after {
   background: none;
 }
 
+@media (max-width: 767px) {
+  body::before {
+    background-size: 100% auto;
+    background-position: center top;
+  }
+}
+
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -1583,6 +1590,12 @@ button.project-card--profile {
   .nav__toggle {
     display: flex;
     margin-right: 0;
+    background: color-mix(in srgb, var(--bg-base) 85%, transparent);
+    border: 1px solid var(--border);
+  }
+
+  .nav__toggle span {
+    background: var(--text-primary);
   }
 
   .nav__list {
