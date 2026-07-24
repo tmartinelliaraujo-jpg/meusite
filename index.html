@@ -34,8 +34,7 @@
         </button>
         <ul class="nav__list" id="navMenu">
           <li><a href="#about">Sobre</a></li>
-          <li><a href="#skills">Equipe</a></li>
-          <li><a href="#projects">Portifolio</a></li>
+          <li><a href="#profiles">Perfis</a></li>
           <li><a href="#contact">Contato</a></li>
         </ul>
       </nav>
@@ -47,9 +46,12 @@
     <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="container hero__content">
-
-
-
+        <h1 class="hero__title" id="hero-title">By Martinelli</h1>
+        <p class="hero__role">Tecnologia e Social Midia para o seu negócio</p>
+        <div class="hero__actions">
+          <a href="#profiles" class="btn btn--primary">Ver perfis</a>
+          <a href="#contact" class="btn btn--ghost">Contato</a>
+        </div>
       </div>
       <a href="#about" class="hero__scroll" aria-label="Rolar para sobre">
         <span class="hero__scroll-line"></span>
@@ -60,188 +62,278 @@
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="container section__inner">
         <header class="section__header">
-          <h2 id="about-title" class="section__title">Sobre a Empresa</h2>
+          <h2 id="about-title" class="section__title">Sobre a empresa</h2>
           <p class="section__subtitle">By Martinelli</p>
         </header>
         <div class="about__grid">
           <p class="about__text lead">
-            Somos um hub híbrido de soluções digitais. Unimos a precisão técnica da programação Full Stack com o impacto artístico do audiovisual para construir marcas que não apenas funcionam com excelência, mas que também dominam visualmente o mercado.
+            A By Martinelli é um hub digital atual: unimos código, sistemas, inteligência artificial e segurança com Social Midia de alto impacto — para marcas que precisam funcionar bem e ser vistas com força.
           </p>
           <div class="about__subtext">
             <p class="about__text">
-              A By Martinelli opera na interseção entre o bit e o frame. Entendemos que hoje, para uma empresa ser relevante, ela precisa de infraestrutura tecnológica sólida e uma imagem de alta qualidade. Por isso, estruturamos nosso CNPJ em dois pilares fundamentais:
+              O mercado mudou. Hoje não basta ter um site bonito ou um feed ativo. É preciso tecnologia confiável, presença visual consistente e conteúdo que conversa com o público certo. Por isso estruturamos a empresa em dois pilares claros e complementares.
             </p>
             <p class="about__text">
-              No pilar de <strong>Tecnologia</strong>, entregamos desenvolvimento de software especializado. Do backend robusto ao frontend intuitivo, construímos aplicações escaláveis, arquitetura de sistemas e soluções em nuvem que garantem performance e segurança para o seu negócio. É a lógica pura aplicada à resolução de problemas complexos.
+              No pilar de <strong>Tecnologia</strong>, atuamos com código, sistemas, IA e segurança. Desenvolvemos sites, sistemas de gestão, soluções governamentais, automações e integrações. Usamos engenharia de prompt, observabilidade e boas práticas para entregar produto estável, performático e preparado para o agora.
             </p>
             <p class="about__text">
-              No pilar de <strong>Mídia</strong>, atuamos como uma produtora de elite. Com foco em filmmaking e fotografia profissional, traduzimos conceitos em imagens cinematográficas. Seja capturando o dinamismo de uma produção automotiva ou criando conteúdo visual de alto padrão para posicionamento de marca, nosso olhar é voltado para a estética impecável e a pós-produção de nível superior.
+              No pilar de <strong>Social Midia</strong>, produzimos e editamos conteúdo com direção visual: foto automotiva, filmagem, reels, vídeos longos e estratégia de presença. Atendemos nichos como política, YouTube, imobiliário e advocacia — sempre com estética forte e narrativa clara.
             </p>
             <p class="about__text">
-              Não somos apenas programadores e não somos apenas fotógrafos. Somos a By Martinelli: o ponto de encontro onde o código encontra a câmera para criar o futuro digital da sua empresa.
+              Não misturamos tudo em uma mensagem só. Você escolhe o perfil que quer avaliar — e a By Martinelli entrega com foco, método e resultado real.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section skills" id="skills" aria-labelledby="skills-title">
+    <section class="section profiles" id="profiles" aria-labelledby="profiles-title">
       <div class="container section__inner">
         <header class="section__header section__header--center">
-          <h2 id="skills-title" class="section__title">Equipe <span class="team-count" id="teamCount">1</span> <span class="team-count-label">Colaboradores</span></h2>
-            <div class="team-switcher" id="teamSwitcher">
-              <span class="team-tab active" id="tab1" onclick="switchTeam('devs')">Desenvolvedores</span>
-              <span class="team-separator">/</span>
-              <span class="team-tab" id="tab2" onclick="switchTeam('media')">Midia</span>
-              <div class="team-indicator" id="teamIndicator"></div>
-            </div>
+          <h2 id="profiles-title" class="section__title">Perfis</h2>
+          <p class="section__subtitle">Selecione a área que deseja avaliar</p>
         </header>
-        <div class="projects__wrapper">
-          <button class="carousel-btn carousel-btn--prev" id="prevResume" aria-label="Anterior">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
+
+        <div class="profile-picker" role="tablist" aria-label="Seleção de perfil">
+          <button type="button" class="profile-picker__btn is-active" role="tab" id="tabMedia"
+            aria-selected="true" aria-controls="panelMedia" data-profile="media">
+            <span class="profile-picker__label">Social Midia</span>
+            <span class="profile-picker__hint">Filmagem, edição e conteúdo mobile</span>
           </button>
-          
-            <!-- Desenvolvedores Group -->
-            <div class="projects__carousel team-group active" id="resumeCarousel" data-team-group="devs">
-              <button type="button" class="project-card project-card--profile" data-profile="taoa"
-                aria-label="Ver currículo de Taoã Araújo">
-                <div class="project-card__media">
-                  <img src="images/taoa.jpeg"
-                    alt="Taoã Martinelli" width="800" height="500" loading="lazy" />
-                </div>
-                <div class="project-card__body">
-                  <h3 class="project-card__title">Taoã Martinelli</h3>
-                  <p class="project-card__desc">Júnior • 1 ano e 9 meses • Full Stack, Designer, Data Base, Kubernets, Web Programador</p>
-                </div>
-              </button>
-            </div>
-
-            <!-- Midia Group -->
-            <div class="projects__carousel team-group" id="mediaCarousel" data-team-group="media" style="display: none;">
-              <article class="project-card">
-              <div class="project-card__media">
-                <img src="images/taoa.jpeg"
-                  alt="Taoã Martinelli" width="800" height="500" loading="lazy" />
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Taoã Martinelli</h3>
-                <p class="project-card__desc">Fotógrafo, Filmaker, Social Midia, Estrategia de Conteudo</p>
-              </div>
-            </article>
-            </div>
-
-          <button class="carousel-btn carousel-btn--next" id="nextResume" aria-label="Próximo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+          <button type="button" class="profile-picker__btn" role="tab" id="tabDev"
+            aria-selected="false" aria-controls="panelDev" data-profile="dev">
+            <span class="profile-picker__label">Desenvolvedor</span>
+            <span class="profile-picker__hint">Código, sistemas, IA e segurança</span>
+          </button>
+          <button type="button" class="profile-picker__btn" role="tab" id="tabAbout"
+            aria-selected="false" aria-controls="panelAbout" data-profile="about">
+            <span class="profile-picker__label">Sobre mim</span>
+            <span class="profile-picker__hint">Quem eu sou por trás de tudo</span>
           </button>
         </div>
-      </div>
-    </section>
 
-    <section class="section projects" id="projects" aria-labelledby="projects-title">
-      <div class="container section__inner">
-        <header class="section__header section__header--center">
-          <h2 id="projects-title" class="section__title">Portifolio</h2>
-          <p class="section__subtitle">portifolio executados</p>
-        </header>
-        <div class="projects__wrapper">
-          <button class="carousel-btn carousel-btn--prev" id="prevProject" aria-label="Anterior">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          
-          <!-- Dev Projects Group -->
-          <div class="projects__carousel team-group active" id="projectCarousel" data-team-group="devs">
-            <article class="project-card">
-              <div class="project-card__media">
-                <img src="images/bymartinelli.png" alt="By Martinelli"
-                  width="800" height="500" loading="lazy" />
+        <div class="profile-panels">
+          <article class="profile-panel" id="panelDev" role="tabpanel" aria-labelledby="tabDev"
+            data-profile-panel="dev" hidden>
+            <div class="profile-panel__intro">
+              <img class="profile-panel__photo" src="images/taoa.jpeg" alt="Taoã Martinelli" width="120"
+                height="120" />
+              <div class="profile-panel__identity">
+                <p class="profile-panel__eyebrow">Perfil · Tecnologia</p>
+                <h3 class="profile-panel__name">Taoã Martinelli</h3>
+                <p class="profile-panel__role">Desenvolvedor full stack · júnior</p>
               </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">By Martinelli</h3>
-                <p class="project-card__desc">
-                  Desenvolvimento web moderno com foco em design limpo e alta performance.
-                </p>
-                <a href="https://tmartinelliaraujo-jpg.github.io/meusite/" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer">Abrir site</a>
+            </div>
+            <p class="profile-panel__lead">
+              Atuo na área há 2 anos por prazer — construir soluções que realmente funcionam.<br />
+              Transformo ideia em produto digital: site, sistema, automação e integração.<br />
+              Do frontend ao backend, com foco em clareza, performance e entrega.<br />
+              Código limpo, processo objetivo e resultado que o cliente consegue usar.<br />
+              Se precisa de tecnologia que resolve de verdade — vamos conversar.
+            </p>
+            <div class="profile-panel__grid">
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Foco</h4>
+                <ul class="profile-panel__list">
+                  <li>Desenvolvimento full stack</li>
+                  <li>Automações e fluxos operacionais</li>
+                  <li>APIs, testes e integração</li>
+                  <li>Interfaces com boa experiência de uso</li>
+                </ul>
               </div>
-            </article>
-            <article class="project-card">
-              <div class="project-card__media">
-                <img src="images/overdrive.png" alt="Overdrive Crew"
-                  width="800" height="500" loading="lazy" />
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Ferramentas</h4>
+                <ul class="profile-panel__tags">
+                  <li>VS Code</li>
+                  <li>Cursor</li>
+                  <li>GitHub / GitLab</li>
+                  <li>Postman</li>
+                  <li>Figma</li>
+                  <li>n8n</li>
+                  <li>GPT</li>
+                  <li>Claude</li>
+                  <li>Gemini</li>
+                  <li>Antigravity</li>
+                  <li>Docker</li>
+                </ul>
               </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Overdrive</h3>
-                <p class="project-card__desc">
-                  Comunidade automotiva focada no conceito "Feito, não comprado" e estilo de vida.
-                </p>
-                <a href="https://tmartinelliaraujo-jpg.github.io/overdrive/" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer">Abrir site</a>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Stack</h4>
+                <ul class="profile-panel__tags">
+                  <li>Python</li>
+                  <li>JavaScript</li>
+                  <li>TypeScript</li>
+                  <li>React</li>
+                  <li>Node</li>
+                  <li>HTML / CSS</li>
+                  <li>Docker</li>
+                  <li>Kubernetes</li>
+                  <li>Dynatrace</li>
+                </ul>
               </div>
-            </article>
-            <article class="project-card project-card--profile" data-profile="taoa" tabindex="0"
-              role="button" aria-label="Ver currículo de Taoã Araújo">
-              <div class="project-card__media">
-                <img src="images/lobby.jpeg" alt="Cúrriculo"
-                  width="800" height="500" loading="lazy" />
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Certificações</h4>
+                <ul class="profile-panel__list">
+                  <li>Python I, II e III — Curso em Vídeo</li>
+                  <li>Inteligência artificial I — Curso em Vídeo</li>
+                  <li>HTML I — Curso em Vídeo</li>
+                  <li>CSS I — Curso em Vídeo</li>
+                  <li>Kubernetes — Udemy</li>
+                  <li>Dynatrace Essential — Dynatrace</li>
+                </ul>
               </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Cúrriculo</h3>
-                <p class="project-card__desc">
-                  Interface gamificada para seleção de perfil e experiência imersiva de usuário.
-                </p>
-                <a href="https://tmartinelliaraujo-jpg.github.io/curriculo/" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer" data-profile-link>Abrir site</a>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Experiências</h4>
+                <ul class="profile-panel__list">
+                  <li>Sistemas de gestão</li>
+                  <li class="profile-panel__topic">
+                    Sistemas governamentais
+                    <ul class="profile-panel__projects">
+                      <li>Progresso.Gov</li>
+                      <li>MESP/MIDR</li>
+                      <li>Extrata</li>
+                    </ul>
+                  </li>
+                  <li>Automações</li>
+                  <li>Engenharia de prompt</li>
+                  <li>Sites de venda</li>
+                  <li>Sites de apresentação</li>
+                </ul>
               </div>
-            </article>
-            <article class="project-card">
-              <div class="project-card__media">
-                <img src="images/lizzie.png"
-                  alt="Portifólio Lizzie" width="800" height="500" loading="lazy" />
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Lizzie Photography</h3>
-                <p class="project-card__desc">
-                  Portfólio especializado em fotografia automotiva estilizada e artística.
-                </p>
-                <a href="https://tmartinelliaraujo-jpg.github.io/portifolio/" class="btn btn--small btn--primary" target="_blank"
-                  rel="noopener noreferrer">Abrir site</a>
-              </div>
-            </article>
-          </div>
+            </div>
+          </article>
 
-          <!-- Media Projects Group -->
-          <div class="projects__carousel team-group" id="mediaProjectCarousel" data-team-group="media" style="display: none;">
-            <button type="button" class="project-card project-card--gallery" data-gallery="carros-rua"
-              aria-label="Abrir galeria Carros de Rua">
-              <div class="project-card__media project-card__media--placeholder" aria-hidden="true"></div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Carros de Rua</h3>
+          <article class="profile-panel is-active" id="panelMedia" role="tabpanel" aria-labelledby="tabMedia"
+            data-profile-panel="media">
+            <div class="profile-panel__intro">
+              <img class="profile-panel__photo" src="images/taoa.jpeg" alt="Taoã Martinelli" width="120"
+                height="120" />
+              <div class="profile-panel__identity">
+                <p class="profile-panel__eyebrow">Perfil · Social Midia</p>
+                <h3 class="profile-panel__name">Taoã Martinelli</h3>
+                <p class="profile-panel__role">Fotógrafo automotivo · filmmaker · editor · conteúdo</p>
               </div>
-            </button>
-            <button type="button" class="project-card project-card--gallery" data-gallery="cobertura-eventos"
-              aria-label="Abrir galeria Cobertura em Eventos">
-              <div class="project-card__media project-card__media--placeholder" aria-hidden="true"></div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Cobertura em Eventos</h3>
+            </div>
+            <p class="profile-panel__lead">
+              Atuo na área há mais de 5 anos por prazer — e isso aparece em cada entrega.<br />
+              Transformo ideia em imagem, filme e conteúdo com estética forte e narrativa clara.<br />
+              Do vídeo curto ao longo, da política ao YouTube, do corretor à advocacia.<br />
+              Produzo e edito com foco em presença, identidade e resultado real.<br />
+              Se a sua marca precisa ser vista, lembrada e desejada — vamos conversar.
+            </p>
+            <div class="profile-panel__grid">
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Foco</h4>
+                <ul class="profile-panel__list">
+                  <li>Fotografia profissional</li>
+                  <li>Filmmaking e cobertura audiovisual</li>
+                  <li>Social media e direção de conteúdo</li>
+                  <li>Pós-produção e identidade visual</li>
+                  <li>Edição e roteirização</li>
+                </ul>
               </div>
-            </button>
-          </div>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Serviços</h4>
+                <ul class="profile-panel__tags">
+                  <li>Ensaios e produtos</li>
+                  <li>Carros e lifestyle</li>
+                  <li>Cobertura de eventos</li>
+                  <li>Reels e vídeo curto</li>
+                  <li>Planejamento de conteúdo</li>
+                  <li>Edições profissionais</li>
+                </ul>
+              </div>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Entrega</h4>
+                <ul class="profile-panel__list">
+                  <li>Imagem com padrão cinematográfico</li>
+                  <li>Conteúdo alinhado à marca</li>
+                  <li>Edição e finalização profissionais</li>
+                </ul>
+              </div>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Equipamentos</h4>
+                <ul class="profile-panel__tags">
+                  <li>Samsung Galaxy S25</li>
+                  <li>Estabilizador Ulanzi</li>
+                  <li>Iluminação Ulanzi</li>
+                  <li>Microfone DJI Mini</li>
+                  <li>Canon T4i</li>
+                  <li>Lente 18-55mm</li>
+                  <li>Drone DJI Neo</li>
+                </ul>
+              </div>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Experiências</h4>
+                <ul class="profile-panel__list">
+                  <li>Produção / edição para política</li>
+                  <li>Produção / edição para YouTube</li>
+                  <li>Produção / edição para vídeos curtos</li>
+                  <li>Produção / edição para corretor / imobiliária</li>
+                  <li>Produção / edição para advocacia / advogada</li>
+                </ul>
+              </div>
+            </div>
+          </article>
 
-          <button class="carousel-btn carousel-btn--next" id="nextProject" aria-label="Próximo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
+          <article class="profile-panel" id="panelAbout" role="tabpanel" aria-labelledby="tabAbout"
+            data-profile-panel="about" hidden>
+            <div class="profile-panel__intro">
+              <img class="profile-panel__photo" src="images/taoa.jpeg" alt="Taoã Martinelli" width="120"
+                height="120" />
+              <div class="profile-panel__identity">
+                <p class="profile-panel__eyebrow">Perfil · Sobre mim</p>
+                <h3 class="profile-panel__name">Taoã Martinelli</h3>
+                <p class="profile-panel__role">Cidade Ocidental · Goiás</p>
+              </div>
+            </div>
+            <p class="profile-panel__lead">
+              Me chamo Taoã Augusto Martinelli de Araújo. Nasci em 30/03/2007.<br />
+              Moro em Cidade Ocidental, Goiás, e sou solteiro.<br />
+              Gosto de aprender na prática, evoluir todo dia e viver com curiosidade.<br />
+              Valorizo empatia, clareza e presença no que faço e com quem convivo.<br />
+              Se quer me conhecer de verdade — aqui está um pouco de quem eu sou.
+            </p>
+            <div class="profile-panel__grid profile-panel__grid--about">
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Dados</h4>
+                <ul class="profile-panel__list">
+                  <li>Nome: Taoã Augusto Martinelli de Araújo</li>
+                  <li>Nascimento: 30/03/2007</li>
+                  <li>Cidade: Cidade Ocidental — Goiás</li>
+                  <li>Estado civil: solteiro</li>
+                </ul>
+              </div>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Sobre</h4>
+                <ul class="profile-panel__list">
+                  <li>Curioso e em constante evolução</li>
+                  <li>Aprendo melhor na prática</li>
+                  <li>Gosto de liderar com empatia</li>
+                  <li>Busco clareza no dia a dia</li>
+                  <li>Valorizo presença e autenticidade</li>
+                  <li>Animado e gosto de animar</li>
+                  <li>Família tradicional</li>
+                  <li>Católico</li>
+                </ul>
+              </div>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Idiomas</h4>
+                <ul class="profile-panel__tags">
+                  <li>Português</li>
+                  <li>Inglês</li>
+                  <li>Espanhol</li>
+                </ul>
+              </div>
+              <div class="profile-panel__block">
+                <h4 class="profile-panel__block-title">Contato</h4>
+                <ul class="profile-panel__list">
+                  <li>WhatsApp: (61) 9.9663-3075</li>
+                  <li>E-mail: tmartinelliaraujo@gmail.com</li>
+                </ul>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -271,61 +363,6 @@
       </div>
     </section>
   </main>
-
-  <div class="photo-lightbox" id="photoLightbox" hidden aria-hidden="true">
-    <button type="button" class="photo-lightbox__backdrop" data-lightbox-close aria-label="Fechar foto ampliada"></button>
-    <figure class="photo-lightbox__stage">
-      <button type="button" class="photo-lightbox__close" data-lightbox-close aria-label="Fechar foto ampliada">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <img class="photo-lightbox__img" id="photoLightboxImg" alt="" />
-    </figure>
-  </div>
-
-  <div class="resume-modal" id="resumeModal" hidden aria-hidden="true">
-    <div class="resume-modal__backdrop" data-resume-close></div>
-    <div class="resume-modal__panel" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
-      <header class="resume-modal__header">
-        <div class="resume-modal__intro">
-          <img class="resume-modal__photo" id="resumeModalPhoto" src="" alt="" width="72" height="72" />
-          <div class="resume-modal__heading">
-            <p class="resume-modal__id" id="resumeModalId"></p>
-            <h2 class="resume-modal__title" id="resumeModalTitle"></h2>
-            <p class="resume-modal__role" id="resumeModalRole"></p>
-          </div>
-        </div>
-        <button type="button" class="resume-modal__close" data-resume-close aria-label="Fechar currículo">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </header>
-      <div class="resume-modal__body" id="resumeModalBody"></div>
-    </div>
-  </div>
-
-  <div class="photo-gallery" id="photoGallery" hidden aria-hidden="true">
-    <div class="photo-gallery__backdrop" data-gallery-close></div>
-    <div class="photo-gallery__panel" role="dialog" aria-modal="true" aria-labelledby="photoGalleryTitle">
-      <header class="photo-gallery__header">
-        <h2 class="photo-gallery__title" id="photoGalleryTitle"></h2>
-        <button type="button" class="photo-gallery__close" data-gallery-close aria-label="Fechar galeria">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </header>
-      <div class="photo-gallery__body" id="photoGalleryBody"></div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
